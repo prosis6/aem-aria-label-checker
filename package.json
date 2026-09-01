@@ -1,0 +1,14 @@
+{
+  "name": "aem-aria-label-checker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node check-card-deck.js",
+    "start": "node server.js",
+    "serve": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

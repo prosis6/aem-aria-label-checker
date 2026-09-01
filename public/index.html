@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEM Card Deck: проверка aria-label</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>AEM Card Deck — проверка <code>aria-label</code></h1>
+      <p class="subtitle">
+        Разбор <code>.infinity.json</code> страниц AEM, компоненты
+        <code>marsh-aemrefresh/components/carddeck</code>: <code>arialabelCardDeckTitle</code>,
+        <code>ariaLabel</code>, <code>cardDeckTitle</code>
+      </p>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>1. Список страниц</h2>
+        <textarea
+          id="paths"
+          rows="8"
+          placeholder="Один путь в строке&#10;/content/test-site/asia/jp/ja_jp/services/captive-insurance"
+        ></textarea>
+        <div class="controls">
+          <label class="field">
+            <span class="field-label">Базовый хост</span>
+            <input type="text" id="host" value="https://www.test-site.com" />
+          </label>
+          <label class="file-label">
+            <input type="file" id="file" accept=".txt,.csv,.log,text/plain,text/csv" />
+            <span>Загрузить файл (.txt / .csv)</span>
+          </label>
+          <span id="pathCount" class="hint">Страниц: 0</span>
+          <span class="spacer"></span>
+          <button id="clearBtn" type="button" class="btn ghost">Очистить</button>
+          <button id="runBtn" type="button" class="btn primary">Проверить</button>
+        </div>
+        <p id="error" class="error" hidden></p>
+        <div id="progress" class="progress" hidden>
+          <div class="spinner"></div>
+          <span id="progressText">Проверяем…</span>
+        </div>
+      </section>
+
+      <section class="panel" id="resultsPanel" hidden>
+        <div class="results-head">
+          <h2>2. Отчёт</h2>
+          <div class="controls">
+            <label class="check">
+              <input type="checkbox" id="onlyFix" />
+              <span>Только требующие правки</span>
+            </label>
+            <span class="spacer"></span>
+            <button id="csvBtn" type="button" class="btn">Скачать CSV</button>
+            <button id="xlsBtn" type="button" class="btn">Скачать Excel</button>
+            <button id="jsonBtn" type="button" class="btn ghost">Скачать JSON</button>
+          </div>
+        </div>
+
+        <div id="summary" class="summary-cards"></div>
+
+        <h3>Сводка по страницам</h3>
+        <div class="table-wrap">
+          <table id="pagesTable" class="grid">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Путь страницы</th>
+                <th class="num">Card Deck</th>
+                <th class="num">К правке</th>
+                <th>Итог</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h3>Детализация по компонентам</h3>
+        <div id="details"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
